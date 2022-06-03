@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../logo.svg';
 import { Counter } from '../features/counter/Counter';
 import '../App.css';
+import PageButton from '../components/pageButton';
 
 function Reduxpage() {
   return (
@@ -49,6 +50,8 @@ function Reduxpage() {
           >
             React Redux
           </a>
+          <br></br>
+          <PageButton path="/todo"/>
         </span>
       </header>
     </div>
