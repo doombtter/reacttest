@@ -1,7 +1,7 @@
 import React,  { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { insert, remove, update, toggle } from '../reducers/todoReducer';
+import { insert, remove, update, toggle, insertAsync, insertIf} from '../reducers/todoReducer';
 
 function Todo() {  
   const [todoInput, setTodoInput] = useState("");
@@ -32,6 +32,26 @@ function Todo() {
     onRemove();
   };
 
+  const addAsync = () => {
+    if (todoInput.length === 0) {
+      alert("내용을 입력해주세요!");
+      return;
+    }
+    dispatch(insertAsync({id: nextId.current, text: todoInput}));
+    nextId.current += 1;
+    onRemove();
+  };
+
+  const addIf = () => {
+    if (todoInput.length === 0) {
+      alert("내용을 입력해주세요!");
+      return;
+    }
+    dispatch(insertIf({id: nextId.current, text: todoInput}));
+    nextId.current += 1;
+    onRemove();
+  }
+
   const todos = useSelector((state) => state.todo.value)
 
   return (
@@ -43,6 +63,8 @@ function Todo() {
           value={todoInput}
           placeholder="할 일을 입력하세요!"
         />
+        <input type="button" onClick={addAsync} value="비동기 입력"></input>
+        <input type="button" onClick={addIf} value="조건부 입력"></input>
       </div>
       <div>
         {todos.map((todo) => (

@@ -57,7 +57,7 @@ export const counterSlice = createSlice({
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
-// 아래 함수를 선택기라고 하며 다음에서 값을 선택할 수 있습니다.
+// 아래 함수를 선택기라고 하며 다음에서 값을 선택할 수 있습니다.                        
 // 상태. 선택자는 대신 사용되는 인라인으로 정의할 수도 있습니다.
 // 슬라이스 파일에서. 예: `useSelector(상태: RootState) => state.counter.value)`
 export const selectCount = (state) => state.counter.value;
